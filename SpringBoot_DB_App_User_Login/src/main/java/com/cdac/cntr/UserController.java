@@ -24,8 +24,12 @@ public class UserController {
 		userService.addUser(user);
 		return "User Added";
 	}
-	@GetMapping(value = "getRes")
-	public String GetResponse() {
-		return "Success";
+	@PostMapping(value = "getUser")
+	public String GetResponse(@RequestBody User user) {
+		User dbUser= userService.findUser(user.getEmailId());
+		if(user.getPassword().equals(dbUser.getPassword()))
+			return "Valid User";
+		else
+			return "Not Valid";
 	}
 }

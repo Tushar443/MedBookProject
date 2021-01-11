@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.cdac.dto.User;
 import com.cdac.repo.UserRepo;
 @Service
-public class UserImple implements IUserService {
+public class UserServiceImple implements IUserService {
 
 	@Autowired
 	UserRepo userRepo;
@@ -14,6 +14,12 @@ public class UserImple implements IUserService {
 	@Override
 	public void addUser(User user) {
 		userRepo.save(user);
+	}
+
+	@Override
+	public User findUser(String emailId) {
+		
+		return userRepo.findByEmailId(emailId);
 	}
 
 }
