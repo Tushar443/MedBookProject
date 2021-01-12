@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cdac.dto.Doctor;
 import com.cdac.dto.Patient;
 import com.cdac.service.IPatientService;
 
@@ -29,7 +30,6 @@ public class PatientController {
 	
 	@PostMapping(value = "addPatient")
 	public String addPatient(@RequestBody Patient patient,HttpSession session) {
-		patient.setFlag("y");
 		Patient dbPatient= patientService.addPatient(patient);
 		session.setAttribute("patient", dbPatient);
 		return "Patient Added";

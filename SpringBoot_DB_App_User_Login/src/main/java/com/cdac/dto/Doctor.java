@@ -14,6 +14,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ColumnDefault;
+
 @Entity
 @Table(name = "Doctor")
 public class Doctor {
@@ -77,11 +79,9 @@ public class Doctor {
 	@JoinTable(name = "Patient_Doctor",joinColumns = {@JoinColumn(name="Doctor_id")},inverseJoinColumns = {@JoinColumn(name="Patient_id")}) 
 	private Set<Patient> allPatient = new HashSet<Patient>();
 	
+	
 	@Column(columnDefinition = "varchar(5) default 'n'")
 	private String isActive;
-	
-	@Column(columnDefinition = "varchar(5) default 'y'")
-	private String flag;
 	
 	public String getIsActive() {
 		return isActive;
@@ -89,14 +89,6 @@ public class Doctor {
 
 	public void setIsActive(String isActive) {
 		this.isActive = isActive;
-	}
-
-	public String getFlag() {
-		return flag;
-	}
-
-	public void setFlag(String flag) {
-		this.flag = flag;
 	}
 
 	public Set<Permission> getDoctorPermission() {

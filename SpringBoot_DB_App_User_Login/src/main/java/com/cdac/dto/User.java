@@ -21,12 +21,10 @@ public class User {
 	
 	@OneToOne
 	@JoinColumn(name = "patient_id", unique = true)
-	
 	private Patient patientId;
 	
 	@OneToOne
 	@JoinColumn(name = "doctor_id",unique = true)
-	
 	private Doctor doctorId;
 	
 	@OneToOne

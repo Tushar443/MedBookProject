@@ -14,12 +14,6 @@ public class Permission {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "permission_id")
 	private int permissionId;
-
-//	@Column(name = "patient_id")
-//	private int patientId;
-//	
-//	@Column(name = "doctorId")
-//	private int doctorId;
 	
 	@Column(columnDefinition = "varchar(5) default 'YES'")
 	private String accessibility ;

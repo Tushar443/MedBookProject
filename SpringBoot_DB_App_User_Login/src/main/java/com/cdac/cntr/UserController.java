@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cdac.dto.Doctor;
 import com.cdac.dto.Patient;
 import com.cdac.dto.User;
 import com.cdac.service.IPatientService;
@@ -30,10 +31,12 @@ public class UserController {
 	@PostMapping(value = "AddUser")
 	public String addUser(@RequestBody User user,HttpSession session) {
 		if(user.getRole().equalsIgnoreCase("d")) {
-			// Doctor Added
-		}
+			Doctor doctor = (Doctor) session.getAttribute("doctor");
+			user.setDoctorId(doctor);
+		}else {
 		Patient patient=(Patient)session.getAttribute("patient");
 		user.setPatientId(patient);
+		}
 		userService.addUser(user);
 		return "User Added";
 	}

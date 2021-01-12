@@ -2,7 +2,7 @@ package com.cdac.dto;
 
 import java.util.HashSet;
 import java.util.Set;
-
+import com.cdac.dto.Record;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,23 +21,12 @@ public class Patient {
 	@Column(name = "patient_id")
 	private long patientId;
 	
-	@Column(columnDefinition = "varchar(5) default 'y'")
-	private String flag;
-	
 	public long getPatientId() {
 		return patientId;
 	}
 
 	public void setPatientId(long patientId) {
 		this.patientId = patientId;
-	}
-
-	public String getFlag() {
-		return flag;
-	}
-
-	public void setFlag(String flag) {
-		this.flag = flag;
 	}
 
 	@ManyToMany(mappedBy = "allPatient")
@@ -87,22 +76,6 @@ public class Patient {
 	public Patient() {
 		// TODO Auto-generated constructor stub
 	}
-
-//	public long getPatientId() {
-//		return patientId;
-//	}
-//
-//	public void setPatientId(long patientId) {
-//		this.patientId = patientId;
-//	}
-
-//	public long getDoctorId() {
-//		return doctorId;
-//	}
-//
-//	public void setDoctorId(long doctorId) {
-//		this.doctorId = doctorId;
-//	}
 
 	public String getModeOfNotification() {
 		return modeOfNotification;

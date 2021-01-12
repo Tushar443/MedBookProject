@@ -16,16 +16,9 @@ public class Record {
 	@Column(name="record_id")
 	private long recordId;
 	
-	
 	@OneToOne
 	@JoinColumn(name = "record_id",unique = true)
 	private FileType fileTypeId;
-	
-//	@Column(name="doctor_id")
-//	private long doctorId;
-//	
-//	@Column(name="patient_id")
-//	private long patientId;
 	
 	@Column(name="record_name",length=50,nullable = false)
 	private String recordName;
@@ -58,18 +51,7 @@ public FileType getFileTypeId() {
 	public void setFileTypeId(FileType fileTypeId) {
 		this.fileTypeId = fileTypeId;
 	}
-	//	public long getDoctorId() {
-//		return doctorId;
-//	}
-//	public void setDoctorId(long doctorId) {
-//		this.doctorId = doctorId;
-//	}
-//	public long getPatientId() {
-//		return patientId;
-//	}
-//	public void setPatientId(long patientId) {
-//		this.patientId = patientId;
-//	}
+	
 	public String getRecordName() {
 		return recordName;
 	}
