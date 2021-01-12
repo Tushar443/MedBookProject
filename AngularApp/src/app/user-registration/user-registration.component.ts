@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { User } from '../Classes/UserInfo';
+import { User } from '../user';
 import { UserService } from '../user.service';
 
 @Component({
@@ -10,6 +10,7 @@ import { UserService } from '../user.service';
 })
 export class UserRegistrationComponent implements OnInit {
   user : User = new User("","","","","","",0,"");
+  
   constructor(private userService:UserService) { }
 
   message:any ="";

@@ -1,11 +1,11 @@
-<div style="text-align: center">
+<!-- <div style="text-align: center">
     <h1>{{message}}</h1>
 </div>
 
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <form>
+            <form >
                 <fieldset>
                     <legend class="text-center">Valid information is required to register. <span class="req"><small>
                                 required *</small></span></legend>
@@ -26,7 +26,7 @@
 
                     <div class="form-group">
                         <label for="Password"><span class="req">* </span> Password : </label>
-                        <input class="form-control" type="text" [(ngModel)]="user.password" name="password" id="password"
+                        <input class="form-control" type="password" [(ngModel)]="user.password" name="password" id="password"
                             placeholder="password" required />
                         <div id="errLast"></div>
                     </div>
@@ -45,7 +45,7 @@
                         <div class="status" id="status"></div>
                     </div>
 
-                    <div class="form-group">
+                     <div class="form-group">
                         <label for="contactNumber"><span class="req">* </span> Date Of Birth: </label>
                         <input class="form-control" required type="radio" [(ngModel)]="user.gender" name="gender"
                             id="dateOfBirth" value="Male" />
@@ -54,16 +54,59 @@
                             <input class="form-control" required type="radio" [(ngModel)]="user.gender" name="gender"
                             id="dateOfBirth" value="TranceGender" />
                         <div class="status" id="status"></div>
-                    </div>
+                    </div> 
 
                     <div class="form-group">
                         <input class="btn btn-success" type="submit" name="submit_reg" value="Register" (click)="RegisterUser()">
                     </div>
                 </fieldset>
-            </form><!-- ends register form -->
-            <!-- second for to fiter user-->
-        </div><!-- ends col-6 -->
+            </form>ends register form 
+             second for to fiter user
+        </div> ends col-6
 
     </div>
+</div>
+ -->
+ <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> 
+ <div class="col-md-6 offset-md-3">
+    <h3> New User </h3>
+    <form (ngSubmit)="RegisterUser()">
+
+        <div class="form-group">
+            <label> Full Name</label>
+            <input type="text" class="form-control" id="firstName" [(ngModel)]="user.name" name="firstName">
+        </div>
+
+        
+
+        <div class="form-group">
+            <label> Email Id</label>
+            <input type="email" class="form-control" id="emailId" [(ngModel)]="user.emailId" name="emailId">
+        </div>
+
+        <div class="form-group">
+            <label> Password</label>
+            <input type="password" class="form-control" id="password" [(ngModel)]="user.password" name="password">
+        </div>
+
+        <div class="form-group">
+            <label> Date Of Birth</label>
+            <input type="text" class="form-control" id="lastName" [(ngModel)]="user.dateOfBirth" name="dateOfBirth">
+        </div>
+
+        <div class="form-group">
+            <label> Contact Number</label>
+            <input type="text" class="form-control" id="lastName" [(ngModel)]="user.contactNumber" name="contactNumber">
+        </div>
+
+        <!-- <div class="form-group">
+            <label> Last Name</label>
+            <input type="text" class="form-control" id="lastName" [(ngModel)]="user." name="lastName">
+        </div> -->
+        <button class="btn btn-success" type="submit">Submit</button>
+
+    </form>
 </div>
 

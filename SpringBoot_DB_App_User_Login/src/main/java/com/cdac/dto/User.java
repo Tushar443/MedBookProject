@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,14 +19,17 @@ public class User {
 	@Column(name="user_id")
 	private long userId;
 	
-	@Column(name="patient_id")
-	private long patientId;
+	@OneToOne
+	@JoinColumn(name = "patient_id", unique = true)
+	private Patient patientId;
 	
-	@Column(name="doctor_id")
-	private long doctorId;
+	@OneToOne
+	@JoinColumn(name = "doctor_id",unique = true)
+	private Doctor doctorId;
 	
-	@Column(name="address_id")
-	private long addressId;
+	@OneToOne
+	@JoinColumn(name = "address_id", unique = true)
+	private Address addressId;
 	
 	@Column(name="email_id",length = 50,nullable = false)
 	private String emailId;
@@ -41,17 +46,17 @@ public class User {
 	@Column(name="date_of_birth",nullable = false)
 	private Date dateOfBirth;
 	
-	@Column(name="role",length = 5,nullable = false)
+	@Column(name="role",length = 5)
 	private String role;
 	
-	@Column(name="gender",length = 5,nullable = false)
+	@Column(name="gender",length = 5)
 	private String gender;
 	
 
 	private int age;
 	
 
-	private String photo;
+	private byte[] photo;
 	
 	public User() {
 		super();
@@ -66,27 +71,29 @@ public class User {
 		this.userId = userId;
 	}
 
-	public long getPatientId() {
+	
+
+	public Patient getPatientId() {
 		return patientId;
 	}
 
-	public void setPatientId(long patientId) {
+	public void setPatientId(Patient patientId) {
 		this.patientId = patientId;
 	}
 
-	public long getDoctorId() {
+	public Doctor getDoctorId() {
 		return doctorId;
 	}
 
-	public void setDoctorId(long doctorId) {
+	public void setDoctorId(Doctor doctorId) {
 		this.doctorId = doctorId;
 	}
 
-	public long getAddressId() {
+	public Address getAddressId() {
 		return addressId;
 	}
 
-	public void setAddressId(long addressId) {
+	public void setAddressId(Address addressId) {
 		this.addressId = addressId;
 	}
 
@@ -154,11 +161,11 @@ public class User {
 		this.age = age;
 	}
 
-	public String getPhoto() {
+	public byte[] getPhoto() {
 		return photo;
 	}
 
-	public void setPhoto(String photo) {
+	public void setPhoto(byte[] photo) {
 		this.photo = photo;
 	}
 
