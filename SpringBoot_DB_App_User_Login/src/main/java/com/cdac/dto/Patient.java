@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -20,8 +21,27 @@ public class Patient {
 	@Column(name = "patient_id")
 	private long patientId;
 	
-	@Column(name = "doctor_id")
-	private long doctorId;
+	@Column(columnDefinition = "varchar(5) default 'y'")
+	private String flag;
+	
+	public long getPatientId() {
+		return patientId;
+	}
+
+	public void setPatientId(long patientId) {
+		this.patientId = patientId;
+	}
+
+	public String getFlag() {
+		return flag;
+	}
+
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
+
+	@ManyToMany(mappedBy = "allPatient")
+	private Set<Doctor> allDoctors = new HashSet<Doctor>();
 	
 	
 	@Column(name = "mode_of_notification",columnDefinition = "varchar(5) default 'y'")
@@ -38,25 +58,51 @@ public class Patient {
 	@JoinColumn(name = "patient_id")
 	private Set<Record> patientRecords = new HashSet<Record>();
 	
+	public Set<Doctor> getAllDoctors() {
+		return allDoctors;
+	}
+
+	public void setAllDoctors(Set<Doctor> allDoctors) {
+		this.allDoctors = allDoctors;
+	}
+
+	public Set<Permission> getPatientPermission() {
+		return patientPermission;
+	}
+
+	public void setPatientPermission(Set<Permission> patientPermission) {
+		this.patientPermission = patientPermission;
+	}
+
+	public Set<Record> getPatientRecords() {
+		return patientRecords;
+	}
+
+	public void setPatientRecords(Set<Record> patientRecords) {
+		this.patientRecords = patientRecords;
+	}
+
+	
+	
 	public Patient() {
-		
+		// TODO Auto-generated constructor stub
 	}
 
-	public long getPatientId() {
-		return patientId;
-	}
+//	public long getPatientId() {
+//		return patientId;
+//	}
+//
+//	public void setPatientId(long patientId) {
+//		this.patientId = patientId;
+//	}
 
-	public void setPatientId(long patientId) {
-		this.patientId = patientId;
-	}
-
-	public long getDoctorId() {
-		return doctorId;
-	}
-
-	public void setDoctorId(long doctorId) {
-		this.doctorId = doctorId;
-	}
+//	public long getDoctorId() {
+//		return doctorId;
+//	}
+//
+//	public void setDoctorId(long doctorId) {
+//		this.doctorId = doctorId;
+//	}
 
 	public String getModeOfNotification() {
 		return modeOfNotification;
@@ -76,14 +122,13 @@ public class Patient {
 
 	@Override
 	public String toString() {
-		return "Patient [patientId=" + patientId + ", doctorId=" + doctorId + ", modeOfNotification="
-				+ modeOfNotification + ", patientBloodGroup=" + patientBloodGroup + "]";
+		return  patientId + " "
+				+ modeOfNotification + " " + patientBloodGroup ;
 	}
 
 	public Patient(long patientId, long doctorId, String modeOfNotification, String patientBloodGroup) {
 		super();
 		this.patientId = patientId;
-		this.doctorId = doctorId;
 		this.modeOfNotification = modeOfNotification;
 		this.patientBloodGroup = patientBloodGroup;
 	}

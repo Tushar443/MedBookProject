@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -17,6 +19,7 @@ import javax.persistence.Table;
 public class Doctor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "doctor_id")
 	private long doctorId;
 	
 	@Column(length = 70,nullable = false)
@@ -68,6 +71,57 @@ public class Doctor {
 	@OneToMany
 	@JoinColumn(name = "doctor_id")
 	private Set<Record> doctorRecords = new HashSet<Record>();
+
+	
+	@ManyToMany
+	@JoinTable(name = "Patient_Doctor",joinColumns = {@JoinColumn(name="Doctor_id")},inverseJoinColumns = {@JoinColumn(name="Patient_id")}) 
+	private Set<Patient> allPatient = new HashSet<Patient>();
+	
+	@Column(columnDefinition = "varchar(5) default 'n'")
+	private String isActive;
+	
+	@Column(columnDefinition = "varchar(5) default 'y'")
+	private String flag;
+	
+	public String getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(String isActive) {
+		this.isActive = isActive;
+	}
+
+	public String getFlag() {
+		return flag;
+	}
+
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
+
+	public Set<Permission> getDoctorPermission() {
+		return doctorPermission;
+	}
+
+	public void setDoctorPermission(Set<Permission> doctorPermission) {
+		this.doctorPermission = doctorPermission;
+	}
+
+	public Set<Record> getDoctorRecords() {
+		return doctorRecords;
+	}
+
+	public void setDoctorRecords(Set<Record> doctorRecords) {
+		this.doctorRecords = doctorRecords;
+	}
+
+	public Set<Patient> getAllPatient() {
+		return allPatient;
+	}
+
+	public void setAllPatient(Set<Patient> allPatient) {
+		this.allPatient = allPatient;
+	}
 
 	public long getDoctorId() {
 		return doctorId;

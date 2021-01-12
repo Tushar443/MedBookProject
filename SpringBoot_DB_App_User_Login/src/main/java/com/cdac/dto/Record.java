@@ -52,7 +52,13 @@ public class Record {
 	public void setRecordId(long recordId) {
 		this.recordId = recordId;
 	}
-//	public long getDoctorId() {
+public FileType getFileTypeId() {
+		return fileTypeId;
+	}
+	public void setFileTypeId(FileType fileTypeId) {
+		this.fileTypeId = fileTypeId;
+	}
+	//	public long getDoctorId() {
 //		return doctorId;
 //	}
 //	public void setDoctorId(long doctorId) {

@@ -12,7 +12,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="UserInfo")
+@Table(name="user_info")
 public class User {
 	@Id
 	@GeneratedValue
@@ -21,10 +21,12 @@ public class User {
 	
 	@OneToOne
 	@JoinColumn(name = "patient_id", unique = true)
+	
 	private Patient patientId;
 	
 	@OneToOne
 	@JoinColumn(name = "doctor_id",unique = true)
+	
 	private Doctor doctorId;
 	
 	@OneToOne
@@ -46,10 +48,10 @@ public class User {
 	@Column(name="date_of_birth",nullable = false)
 	private Date dateOfBirth;
 	
-	@Column(name="role",length = 5)
+	@Column(columnDefinition = "varchar(5) default 'p'")
 	private String role;
 	
-	@Column(name="gender",length = 5)
+	@Column(name="gender",length = 10)
 	private String gender;
 	
 

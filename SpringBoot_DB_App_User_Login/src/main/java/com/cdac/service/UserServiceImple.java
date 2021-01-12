@@ -17,8 +17,7 @@ public class UserServiceImple implements IUserService {
 	}
 
 	@Override
-	public User findUser(String emailId) {
-		
+	public User findUser(String emailId) {	
 		return userRepo.findByEmailId(emailId);
 	}
 

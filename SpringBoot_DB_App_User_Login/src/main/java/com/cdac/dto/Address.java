@@ -33,6 +33,10 @@ public class Address {
 	
 	@Column(length = 10)
 	private String pincode;
+	
+	public Address() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public long getAddress_id() {
 		return address_id;
