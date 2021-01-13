@@ -57,6 +57,8 @@ public class UserController {
 		else
 			return "Not Valid";
 		}
+		
+		
 		else
 		return "Not Registered";
 	}
@@ -71,6 +73,9 @@ public class UserController {
 		 Address add =userService.addAddress(address);
 		session.setAttribute("address", add);
 		return "Address Added";
+		
+		
+		
 	}
 	
 	
