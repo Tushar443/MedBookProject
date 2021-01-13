@@ -34,12 +34,12 @@ public class UserController {
 		if(user.getRole().equalsIgnoreCase("d")) {
 			Doctor doctor = (Doctor) session.getAttribute("doctor");
 			user.setDoctorId(doctor);
-		}else {
-		Patient patient=(Patient)session.getAttribute("patient");
-		user.setPatientId(patient);
-		}
-		Address address= (Address)session.getAttribute("address");
-		user.setAddressId(address);
+		}//else {
+		//Patient patient=(Patient)session.getAttribute("patient");
+		//user.setPatientId(patient);
+		//}
+		//Address address= (Address)session.getAttribute("address");
+		//user.setAddressId(address);
 		userService.addUser(user);
 		return "User Added";
 	}
@@ -55,12 +55,12 @@ public class UserController {
 			return "User";
 		}
 		else
-			return "Not Valid";
+			return "Invalid Password";
 		}
 		
 		
 		else
-		return "Not Registered";
+		return "Email id is not registered";
 	}
 	
 	@GetMapping(value = "getURes")
