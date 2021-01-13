@@ -1,0 +1,22 @@
+package com.cdac.cntr;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.cdac.service.IDoctorService;
+
+@RestController
+@SpringBootApplication
+@CrossOrigin(origins = "*")
+public class DoctorController {
+
+	@Autowired
+	private IDoctorService doctorService;
+	
+	public String getDRes() {
+		return "Doctor Api";
+	}
+	
+}

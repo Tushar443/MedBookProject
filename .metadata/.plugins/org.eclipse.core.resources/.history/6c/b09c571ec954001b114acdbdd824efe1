@@ -1,0 +1,18 @@
+package com.cdac.service;
+
+import org.springframework.stereotype.Service;
+
+import com.cdac.dto.Patient;
+import com.cdac.repo.PatientRepo;
+
+@Service
+public class PatientService implements IPatientService {
+
+	private PatientRepo patientRepo;
+	
+	@Override
+	public void addPatient(Patient patient) {
+		patientRepo.save(patient);
+	}
+
+}

@@ -1,0 +1,23 @@
+package com.cdac.cntr;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.cdac.service.IPatientService;
+import com.cdac.service.IUserService;
+
+@RestController
+@SpringBootApplication
+@CrossOrigin(origins = "*")
+public class PatientController {
+	
+	@Autowired
+	IPatientService patientService;
+	
+	public String getResPonse() {
+		return "Patient Api";
+	}
+
+}

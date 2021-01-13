@@ -1,0 +1,13 @@
+package com.cdac.service;
+
+import com.cdac.dto.Patient;
+
+public class PatientService implements IPatientService {
+
+	@Override
+	public boolean addPatient(Patient patient) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

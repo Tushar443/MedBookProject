@@ -1,0 +1,11 @@
+package com.cdac.service;
+
+public class RecordService implements IRecordService {
+
+	@Override
+	public Record addRecord(Record record) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,9 @@
+package com.cdac.service;
+
+import com.cdac.dto.Patient;
+
+public interface IPatientService {
+	
+	void addPatient(Patient patient);
+	Patient findFlag();
+}

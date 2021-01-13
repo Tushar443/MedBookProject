@@ -1,0 +1,13 @@
+package com.cdac.service;
+
+import com.cdac.dto.Permission;
+
+public class PermissionService implements IPermissionService {
+
+	@Override
+	public void addPermission(Permission permission) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

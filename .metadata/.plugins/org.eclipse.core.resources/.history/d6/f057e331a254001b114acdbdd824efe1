@@ -1,0 +1,13 @@
+package com.cdac.dto;
+
+public class Address {
+	private long address_id;
+	private int pincode;
+	private String city;
+	private String street;
+	private String flatNo;
+	private String state;
+	private String area;
+	private String country;
+
+}

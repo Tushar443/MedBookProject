@@ -1,0 +1,36 @@
+package com.cdac.dto;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+public class Address {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long address_id;
+	
+	@Column(name = "flat_no",length = 50)
+	private String flatNo;
+	
+	@Column(length = 50)
+	private String area;
+	
+	@Column(length = 50)
+	private String street;
+	
+	@Column(length = 30)
+	private String city;
+	
+	@Column(length = 30)
+	private String state;
+	
+	@Column(length = 30)
+	private String country;
+	
+	@Column(length = 10)
+	private String pincode;
+	
+	
+	
+}

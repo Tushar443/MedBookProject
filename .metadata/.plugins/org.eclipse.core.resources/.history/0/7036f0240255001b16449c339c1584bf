@@ -1,0 +1,19 @@
+package com.cdac.service;
+
+import org.springframework.stereotype.Service;
+
+import com.cdac.repo.RecordRepo;
+
+@Service
+public class RecordService implements IRecordService {
+
+	
+	private RecordRepo recordRepo;
+	
+	@Override
+	public Record addRecord(Record record) {
+		
+		return recordRepo.save(record);
+	}
+
+}
