@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cdac.dto.Address;
 import com.cdac.dto.Doctor;
 import com.cdac.dto.Patient;
 import com.cdac.dto.User;
@@ -37,6 +38,8 @@ public class UserController {
 		Patient patient=(Patient)session.getAttribute("patient");
 		user.setPatientId(patient);
 		}
+		Address address= (Address)session.getAttribute("address");
+		user.setAddressId(address);
 		userService.addUser(user);
 		return "User Added";
 	}
@@ -45,8 +48,11 @@ public class UserController {
 		User dbUser= userService.findUser(user.getEmailId());
 		if(dbUser !=null) {
 		if(user.getPassword().equals(dbUser.getPassword())) {
+			if(user.getRole().equals("d")) {
+				return "Doctor";
+			}
 			session.setAttribute("user", dbUser);
-			return "Valid User";
+			return "User";
 		}
 		else
 			return "Not Valid";
@@ -59,4 +65,13 @@ public class UserController {
 	public String getResPonseUser() {
 		return "User Api";
 	}
+	
+	@PostMapping(value = "addAddress")
+	public String addAddress(@RequestBody Address address,HttpSession session) {
+		 Address add =userService.addAddress(address);
+		session.setAttribute("address", add);
+		return "Address Added";
+	}
+	
+	
 }

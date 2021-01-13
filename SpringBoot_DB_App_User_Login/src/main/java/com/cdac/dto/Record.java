@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -26,6 +28,7 @@ public class Record {
 	@Column(name="date",nullable = false)
 	private String date ;
 	
+
 	@Column(name="disease_name",length=50)
 	private String disceaseName;
 	
@@ -36,9 +39,32 @@ public class Record {
 	private byte[] files;
 	
 	
+	@ManyToOne
+	@JoinColumn(name="patient_id")
+	private Patient patientId;
+	
+	@ManyToOne
+	@JoinColumn(name = "doctor_id")
+	private Doctor doctorId;
+	
+	
 	public Record() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Patient getPatientId() {
+		return patientId;
+	}
+	public void setPatientId(Patient patientId) {
+		this.patientId = patientId;
+	}
+	public Doctor getDoctorId() {
+		return doctorId;
+	}
+	public void setDoctorId(Doctor doctorId) {
+		this.doctorId = doctorId;
+	}
+
 	public long getRecordId() {
 		return recordId;
 	}

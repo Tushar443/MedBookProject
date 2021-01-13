@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cdac.dto.Doctor;
+import com.cdac.dto.Patient;
 import com.cdac.service.IDoctorService;
 
 @RestController
@@ -33,5 +35,14 @@ public class DoctorController {
 		return "Doctor Added";
 	}
 	
+//	//to request http://localhost:3033/getPatientId?patientId=1
+//	@GetMapping(value = "getPatientId")
+//	public Patient getPatient(@RequestParam("patientId") long patientId) {
+//		
+//		Patient patient = doctorService.findPatient(patientId);
+//		
+//		
+//		return patient;
+//	}
 	
 }

@@ -66,15 +66,6 @@ public class Doctor {
 	@Column(name="identity_proof",length = 3000,nullable = false)
 	private String identityProof;
 	
-	@OneToMany
-	@JoinColumn(name = "doctor_id")
-	private Set<Permission> doctorPermission = new HashSet<Permission>();
-	
-	@OneToMany
-	@JoinColumn(name = "doctor_id")
-	private Set<Record> doctorRecords = new HashSet<Record>();
-
-	
 	@ManyToMany
 	@JoinTable(name = "Patient_Doctor",joinColumns = {@JoinColumn(name="Doctor_id")},inverseJoinColumns = {@JoinColumn(name="Patient_id")}) 
 	private Set<Patient> allPatient = new HashSet<Patient>();
@@ -89,22 +80,6 @@ public class Doctor {
 
 	public void setIsActive(String isActive) {
 		this.isActive = isActive;
-	}
-
-	public Set<Permission> getDoctorPermission() {
-		return doctorPermission;
-	}
-
-	public void setDoctorPermission(Set<Permission> doctorPermission) {
-		this.doctorPermission = doctorPermission;
-	}
-
-	public Set<Record> getDoctorRecords() {
-		return doctorRecords;
-	}
-
-	public void setDoctorRecords(Set<Record> doctorRecords) {
-		this.doctorRecords = doctorRecords;
 	}
 
 	public Set<Patient> getAllPatient() {

@@ -2,15 +2,14 @@ package com.cdac.dto;
 
 import java.util.HashSet;
 import java.util.Set;
-import com.cdac.dto.Record;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+
 import javax.persistence.Table;
 
 @Entity
@@ -20,14 +19,6 @@ public class Patient {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "patient_id")
 	private long patientId;
-	
-	public long getPatientId() {
-		return patientId;
-	}
-
-	public void setPatientId(long patientId) {
-		this.patientId = patientId;
-	}
 
 	@ManyToMany(mappedBy = "allPatient")
 	private Set<Doctor> allDoctors = new HashSet<Doctor>();
@@ -39,13 +30,14 @@ public class Patient {
 	@Column(name="patient_blood_group",length = 5)
 	private String patientBloodGroup;
 	
-	@OneToMany
-	@JoinColumn(name = "patient_id")
-	private Set<Permission> patientPermission = new HashSet<Permission>();
 	
-	@OneToMany
-	@JoinColumn(name = "patient_id")
-	private Set<Record> patientRecords = new HashSet<Record>();
+	public long getPatientId() {
+		return patientId;
+	}
+
+	public void setPatientId(long patientId) {
+		this.patientId = patientId;
+	}
 	
 	public Set<Doctor> getAllDoctors() {
 		return allDoctors;
@@ -54,24 +46,6 @@ public class Patient {
 	public void setAllDoctors(Set<Doctor> allDoctors) {
 		this.allDoctors = allDoctors;
 	}
-
-	public Set<Permission> getPatientPermission() {
-		return patientPermission;
-	}
-
-	public void setPatientPermission(Set<Permission> patientPermission) {
-		this.patientPermission = patientPermission;
-	}
-
-	public Set<Record> getPatientRecords() {
-		return patientRecords;
-	}
-
-	public void setPatientRecords(Set<Record> patientRecords) {
-		this.patientRecords = patientRecords;
-	}
-
-	
 	
 	public Patient() {
 		// TODO Auto-generated constructor stub

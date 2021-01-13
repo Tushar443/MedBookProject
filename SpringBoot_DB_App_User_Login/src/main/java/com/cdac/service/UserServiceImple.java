@@ -3,13 +3,18 @@ package com.cdac.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cdac.dto.Address;
 import com.cdac.dto.User;
+import com.cdac.repo.AddressRepo;
 import com.cdac.repo.UserRepo;
 @Service
 public class UserServiceImple implements IUserService {
 
 	@Autowired
 	UserRepo userRepo;
+	
+	@Autowired
+	AddressRepo addressRepo;
 	
 	@Override
 	public void addUser(User user) {
@@ -19,6 +24,12 @@ public class UserServiceImple implements IUserService {
 	@Override
 	public User findUser(String emailId) {	
 		return userRepo.findByEmailId(emailId);
+	}
+
+	@Override
+	public Address addAddress(Address address) {
+		
+		return addressRepo.save(address);
 	}
 
 }

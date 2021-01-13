@@ -12,9 +12,9 @@ import javax.persistence.Table;
 @Table(name = "file_type")
 public class FileType {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "file_type_id")
-	private int fileTypeId;
+	private long fileTypeId;
 	
 	@Column(name = "file_type_name" ,length = 30)
 	private String fileTypeName;
@@ -32,12 +32,12 @@ public class FileType {
 	}
 
 
-	public int getFileTypeId() {
+	public long getFileTypeId() {
 		return fileTypeId;
 	}
 
 
-	public void setFileTypeId(int fileTypeId) {
+	public void setFileTypeId(long fileTypeId) {
 		this.fileTypeId = fileTypeId;
 	}
 

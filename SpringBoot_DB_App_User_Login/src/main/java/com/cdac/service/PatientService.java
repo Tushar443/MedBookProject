@@ -1,5 +1,7 @@
 package com.cdac.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,12 @@ public class PatientService implements IPatientService {
 	public Patient addPatient(Patient patient) {
 		Patient dbPatient = patientRepo.save(patient);
 		return dbPatient;
+	}
+
+	@Override
+	public Optional<Patient> findPatientById(long patientId) {
+		
+		return patientRepo.findById(patientId);
 	}
 	
 }

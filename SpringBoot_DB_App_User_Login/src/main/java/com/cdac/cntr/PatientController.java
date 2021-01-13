@@ -1,5 +1,9 @@
 package com.cdac.cntr;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +38,15 @@ public class PatientController {
 		session.setAttribute("patient", dbPatient);
 		return "Patient Added";
 	}
+	
+	@PostMapping(value = "allRecords")
+	public String getAllRecords(HttpSession session) {
+		
+		Patient patient =(Patient) session.getAttribute("patient");
+//		List<Record> records =  
+		return "";
+	}
+	
+	
 
 }
