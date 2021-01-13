@@ -36,7 +36,6 @@ INDEX VERSION 1.131+/home/thunderstorm/Desktop/Git/MedBookProject/.metadata/.plu
 4222985723.index
 2003484182.index
 3727272847.index
-2997587291.index
 2424345368.index
 138838275.index
 1444408509.index

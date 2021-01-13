@@ -9,7 +9,11 @@
 	<configs>
 	</configs>
 	<autoconfigs>
+		<config>java:com.cdac.cntr.PermissionController</config>
 		<config>java:com.cdac.SpringBootDbAppApplication</config>
+		<config>java:com.cdac.cntr.PatientController</config>
+		<config>java:com.cdac.cntr.UserController</config>
+		<config>java:com.cdac.cntr.DoctorController</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>
