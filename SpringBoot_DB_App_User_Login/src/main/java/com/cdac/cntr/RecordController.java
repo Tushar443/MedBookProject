@@ -73,13 +73,13 @@ public class RecordController {
 			return records;
 		}
 		
-		@GetMapping(value = "getAllRecords")
-		public List<Record> getAllRecords(@RequestParam("patientId") long patientId,HttpSession session){
+		//@GetMapping(value = "getAllRecords")
+		//public List<Record> getAllRecords(@RequestParam("patientId") long patientId,HttpSession session){
 			
 			
 			
 		
-		}
+		
 		
 		
 		
