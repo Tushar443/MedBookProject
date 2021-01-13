@@ -44,7 +44,7 @@ public class User {
 	private String contactNumber;
 	
 	@Column(name="date_of_birth",nullable = false)
-	private Date dateOfBirth;
+	private String dateOfBirth;
 	
 	@Column(columnDefinition = "varchar(5) default 'p'")
 	private String role;
@@ -129,12 +129,12 @@ public class User {
 		this.contactNumber = contactNumber;
 	}
 
-	public Date getDateOfBirth() {
+	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+	public void setDateOfBirth(String dateOfBirth2) {
+		this.dateOfBirth = dateOfBirth2;
 	}
 
 	public String getRole() {

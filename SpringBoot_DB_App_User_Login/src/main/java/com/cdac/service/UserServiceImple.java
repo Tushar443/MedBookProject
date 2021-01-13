@@ -17,8 +17,8 @@ public class UserServiceImple implements IUserService {
 	AddressRepo addressRepo;
 	
 	@Override
-	public void addUser(User user) {
-		userRepo.save(user);
+	public User addUser(User user) {
+		return userRepo.save(user);
 	}
 
 	@Override

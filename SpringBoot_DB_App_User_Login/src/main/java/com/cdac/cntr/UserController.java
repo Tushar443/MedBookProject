@@ -15,6 +15,8 @@ import com.cdac.dto.Address;
 import com.cdac.dto.Doctor;
 import com.cdac.dto.Patient;
 import com.cdac.dto.User;
+import com.cdac.extraClasses.User_Address;
+import com.cdac.service.IDoctorService;
 import com.cdac.service.IPatientService;
 import com.cdac.service.IUserService;
 
@@ -29,18 +31,29 @@ public class UserController {
 	@Autowired
 	IPatientService patientService;
 	
+	@Autowired 
+	IDoctorService doctorService;
+	
 	@PostMapping(value = "AddUser")
-	public String addUser(@RequestBody User user,HttpSession session) {
+	public String addUser(@RequestBody User_Address user_address,HttpSession session) {
+		//get separate objects
+		Address address = user_address.getAddressObj();
+		User user = user_address.getUserObj();
+		
+		// Add Address
+		address= userService.addAddress(address);
+		user.setAddressId(address);
+		
+		//check the role
 		if(user.getRole().equalsIgnoreCase("d")) {
-			Doctor doctor = (Doctor) session.getAttribute("doctor");
+			Doctor doctor = doctorService.addDoctor(user_address.getDoctorObj());
 			user.setDoctorId(doctor);
-		}//else {
-		//Patient patient=(Patient)session.getAttribute("patient");
-		//user.setPatientId(patient);
-		//}
-		//Address address= (Address)session.getAttribute("address");
-		//user.setAddressId(address);
-		userService.addUser(user);
+		}else {
+		Patient patient=patientService.addPatient(user_address.getPatienObj());
+		user.setPatientId(patient);
+		}
+		//add User
+		user = userService.addUser(user);
 		return "User Added";
 	}
 	@PostMapping(value = "getUser")
