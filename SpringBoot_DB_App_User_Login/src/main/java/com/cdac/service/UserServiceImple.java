@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cdac.dto.Address;
+import com.cdac.dto.Doctor;
 import com.cdac.dto.User;
 import com.cdac.repo.AddressRepo;
 import com.cdac.repo.UserRepo;
@@ -30,6 +31,12 @@ public class UserServiceImple implements IUserService {
 	public Address addAddress(Address address) {
 		
 		return addressRepo.save(address);
+	}
+
+	@Override
+	public User findUserByDoctorId(Doctor doctor) {
+		
+		return userRepo.findByDoctorId(doctor);
 	}
 
 }

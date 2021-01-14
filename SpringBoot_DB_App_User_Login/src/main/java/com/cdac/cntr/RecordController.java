@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cdac.dto.Doctor;
 import com.cdac.dto.Patient;
 import com.cdac.dto.Record;
+import com.cdac.dto.User;
 import com.cdac.service.IDoctorService;
 import com.cdac.service.IPatientService;
 import com.cdac.service.IRecordService;
@@ -82,12 +83,16 @@ public class RecordController {
 			if(val.isPresent()) {
 				patient = val.get();
 			}
+			User user = null;
 			List<Record> records = recordService.findAllRecords(patient);
 			for (Record record : records) {
-				Doctor doctorId= record.getDoctorId();
+				Doctor doctor= record.getDoctorId();
+				
+				 user =userService.findUserByDoctorId(doctor);
 				
 				
 			}
+			System.out.println("@@@@@@@@@@@@@ "+user.getName());
 			return 	records;	
 		}
 			
