@@ -20,6 +20,7 @@ import com.cdac.dto.Record;
 import com.cdac.service.IDoctorService;
 import com.cdac.service.IPatientService;
 import com.cdac.service.IRecordService;
+import com.cdac.service.IUserService;
 
 @RestController
 @SpringBootApplication
@@ -34,6 +35,9 @@ public class RecordController {
 	
 	@Autowired
 	private IDoctorService doctorService;
+	
+	@Autowired
+	private IUserService userService;
 
 	@GetMapping(value = "getRRes")
 	public String getResRecord() {
@@ -62,6 +66,7 @@ public class RecordController {
 			patient = val.get();
 		}
 		Doctor doctor=null;
+		
 		Optional<Doctor> vald = doctorService.findDoctor(doctorId);
 		if(vald.isPresent()) {
 			doctor = vald.get();
@@ -79,7 +84,9 @@ public class RecordController {
 			}
 			List<Record> records = recordService.findAllRecords(patient);
 			for (Record record : records) {
-				//long record.getDoctorId();
+				Doctor doctorId= record.getDoctorId();
+				
+				
 			}
 			return 	records;	
 		}
