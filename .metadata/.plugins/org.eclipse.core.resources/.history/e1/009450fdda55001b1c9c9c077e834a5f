@@ -1,0 +1,33 @@
+package com.cdac.extraClasses;
+
+public class User_Address {
+	 public String name;
+	    public String emailId;
+	    public String password;
+	    public String contactNumber;
+	    public String dateOfBirth;
+	    public String role;
+	    public String gender;
+	    public String age;
+	    //public photo: File;
+	    /**
+	     * Address 
+	     * */
+	    public String flatNo;
+	    public String area ;
+	    public String street ;
+	    public String city;
+	    public String state;
+	    public String country ;
+	    public String pincode;
+	    
+	    /**
+	     * Patient 
+	     * */
+
+	    public String patientBloodGroup;
+	    
+	    /**
+	     * Doctor 
+	     * */
+}

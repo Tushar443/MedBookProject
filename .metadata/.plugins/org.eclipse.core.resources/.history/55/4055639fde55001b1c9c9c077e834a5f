@@ -1,0 +1,97 @@
+package com.cdac.extraClasses;
+
+import com.cdac.dto.Address;
+import com.cdac.dto.Doctor;
+import com.cdac.dto.User;
+
+public class User_Address {
+	 public String name;
+	    public String emailId;
+	    public String password;
+	    public String contactNumber;
+	    public String dateOfBirth;
+	    public String role;
+	    public String gender;
+	    public String age;
+	    //public photo: File;
+	    /**
+	     * Address 
+	     * */
+	    public String flatNo;
+	    public String area ;
+	    public String street ;
+	    public String city;
+	    public String state;
+	    public String country ;
+	    public String pincode;
+	    
+	    /**
+	     * Patient 
+	     * */
+
+	    public String patientBloodGroup;
+	    
+	    /**
+	     * Doctor 
+	     * */
+	    
+	   public String specialization;
+	   public String doctorRegistrationCouncil;
+	   public String doctorRegistrationYear;
+	   public String doctorRegistrationNumber;
+	   public String college;
+	   public String degree;
+	   public String yearOfCompletion;
+	   public String yearOfExperiance;
+	   public String establishmentName;
+	   public String establishmentCity;
+	   public String locality;
+	   public String medicalProof;
+	   public String establishmentProof;
+	   public String identityProof;	
+	   
+	   
+	   
+	   public  User getUserObj(User_Address user_address) {
+		   User user = new User();
+			user.setContactNumber(user_address.contactNumber);
+			user.setDateOfBirth(user_address.dateOfBirth);
+			user.setEmailId(user_address.emailId);
+			user.setGender(user_address.gender);
+			user.setName(user_address.name);
+			user.setPassword(user_address.password);
+			user.setRole(user_address.role);
+		   return user;
+	   }
+	   
+	   public Address getAddressObj(User_Address user_address) {
+		   Address address = new Address();
+			address.setArea(user_address.area);
+			address.setCity(user_address.city);
+			address.setCountry(user_address.country);
+			address.setFlatNo(user_address.flatNo);
+			address.setPincode(user_address.pincode);
+			address.setState(user_address.state);
+			address.setStreet(user_address.street);
+			return address;
+	   }
+	   
+	   public Doctor getDoctorObj() {
+		   Doctor doctor = new Doctor();
+		   doctor.setCollege(college);
+		   doctor.setDegree(degree);
+		   doctor.setDoctorRegistrationCouncil(doctorRegistrationCouncil);
+		   doctor.setDoctorRegistrationNumber(doctorRegistrationNumber);
+		   doctor.setDoctorRegistrationYear(doctorRegistrationYear);
+		   doctor.setEstablishmentCity(establishmentCity);
+		   doctor.setEstablishmentName(establishmentName);
+		   doctor.setEstablishmentProof(establishmentProof);
+		   doctor.setLocality(locality);
+		   doctor.setMedicalProof(medicalProof);
+		   doctor.setIdentityProof(identityProof);
+		   doctor.setSpecialization(specialization);
+		   doctor.setYearOfCompletion(yearOfCompletion);
+		   doctor.setYearOfExperiance(yearOfExperiance);
+		   return doctor;
+	   }
+}
