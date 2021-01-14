@@ -21,9 +21,14 @@ public class RecordService implements IRecordService {
 		return recordRepo.save(record);
 	}
 	@Override
-	public List<Record> findPatient(Patient patient, Doctor doctor) {
+	public List<Record> findRecordByDoctor(Patient patient, Doctor doctor) {
 		
 		return recordRepo.findByDoctorIdAndPatientId(doctor, patient);
+	}
+	@Override
+	public List<Record> findAllRecords(Patient patient) {
+		
+		return recordRepo.findByPatientId(patient);
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.cdac.cntr;
 
+import java.util.Base64;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.cdac.dto.Address;
 import com.cdac.dto.Doctor;
 import com.cdac.dto.Patient;
@@ -40,6 +40,8 @@ public class UserController {
 		Address address = user_address.getAddressObj();
 		User user = user_address.getUserObj();
 		
+		String encryptedPass = getEncryptPass(user.getPassword());
+		user.setPassword(encryptedPass);
 		// Add Address
 		address= userService.addAddress(address);
 		user.setAddressId(address);
@@ -56,11 +58,20 @@ public class UserController {
 		user = userService.addUser(user);
 		return "User Added";
 	}
+	
+	protected String getEncryptPass(String userPass) {
+		return Base64.getEncoder().encodeToString(userPass.getBytes());
+	}
+	protected String getDecryptPass(String userPass) {
+		return new String(Base64.getMimeDecoder().decode(userPass));
+	}
 	@PostMapping(value = "getUser")
 	public String GetResponse(@RequestBody User user,HttpSession session) {
 		User dbUser= userService.findUser(user.getEmailId());
+		
 		if(dbUser !=null) {
-		if(user.getPassword().equals(dbUser.getPassword())) {
+			String decryptedPass = getDecryptPass(dbUser.getPassword());
+		if(user.getPassword().equals(decryptedPass)) {
 			if(user.getRole().equals("d")) {
 				return "Doctor";
 			}

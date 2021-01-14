@@ -12,5 +12,7 @@ import com.cdac.dto.Record;
 public interface RecordRepo extends CrudRepository<Record, Long>{
 
 	List<Record> findByDoctorIdAndPatientId(Doctor doctor,Patient patient);
+	
+	List<Record> findByPatientId(Patient patient);
 
 }

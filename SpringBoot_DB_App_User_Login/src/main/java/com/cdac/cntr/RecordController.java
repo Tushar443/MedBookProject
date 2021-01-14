@@ -54,27 +54,35 @@ public class RecordController {
 	}
 	
 	//to request http://localhost:3033/getPatientId?patientId=1
-		@GetMapping(value = "getPatientbyDoctor")
-		public List<Record> getPatient(@RequestParam("patientId") long patientId,HttpSession session) {
+		@GetMapping(value = "getRecordbyDoctor")
+		public List<Record> getPatient(@RequestParam("patientId") long patientId,@RequestParam("doctorId") long doctorId,HttpSession session) {
 		Optional<Patient> val = patientService.findPatientById(patientId);
 		Patient patient = null;
 		if(val.isPresent()) {
 			patient = val.get();
 		}
-//		Doctor doctor=(Doctor)session.getAttribute("doctor");
 		Doctor doctor=null;
-		Optional<Doctor> vald = doctorService.findDoctor(3);
+		Optional<Doctor> vald = doctorService.findDoctor(doctorId);
 		if(vald.isPresent()) {
 			doctor = vald.get();
 		}
-		System.out.println(doctor);
-		System.out.println(patient);
-		List<Record> records = recordService.findPatient(patient,doctor);
+		List<Record> records = recordService.findRecordByDoctor(patient,doctor);
 			return records;
 		}
 		
-		//@GetMapping(value = "getAllRecords")
-		//public List<Record> getAllRecords(@RequestParam("patientId") long patientId,HttpSession session){
+		@GetMapping(value = "getAllRecords")
+		public List<Record> getAllRecords(@RequestParam("patientId") long patientId,HttpSession session){
+			Optional<Patient> val = patientService.findPatientById(patientId);
+			Patient patient = null;
+			if(val.isPresent()) {
+				patient = val.get();
+			}
+			List<Record> records = recordService.findAllRecords(patient);
+			for (Record record : records) {
+				//long record.getDoctorId();
+			}
+			return 	records;	
+		}
 			
 			
 			
